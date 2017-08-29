@@ -11,8 +11,4 @@ aS'deferred_income'
 p5
 aS'long_term_incentive'
 p6
-aS'normalized_from_poi'
-p7
-aS'normalized_to_poi'
-p8
 a.

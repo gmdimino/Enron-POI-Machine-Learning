@@ -56,6 +56,8 @@ def get_and_process_data():
 
   ### Task 3: Create new feature(s)
   # Add new normalized messages to/from POI and drop the old ones.
+  # Note that these features are problematic, since they rely on knowing who
+  # the POI are.
   df["normalized_from_poi"] = df["from_poi_to_this_person"]/df["to_messages"]
   df["normalized_to_poi"] = df["from_this_person_to_poi"]/df["from_messages"]
   df = df.drop("from_poi_to_this_person", 1)
@@ -70,14 +72,15 @@ def main():
   my_dataset = get_and_process_data() 
 
   # Naive Bayes
+  # Removed problematic features
   best_featureset_nb = ['poi',
      'salary',
      'bonus',
      'exercised_stock_options',
      'deferred_income',
      'long_term_incentive',
-     'normalized_from_poi',
-     'normalized_to_poi'
+     # 'normalized_from_poi',
+     # 'normalized_to_poi'
     ]
 
   from sklearn.naive_bayes import GaussianNB
